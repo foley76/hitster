@@ -165,7 +165,7 @@ async function fetchTrackData(token, url) {
 async function generateCards() {
   const clientId = document.getElementById("clientId").value.trim();
   const clientSecret = document.getElementById("clientSecret").value.trim();
-  if (!clientId || !clientSecret) return alert("No Spotify Client ID / Client Secretet!");
+  if (!clientId || !clientSecret) return alert("No Spotify Client ID / Client Secret!");
 
   
   localStorage.setItem("spotifyClientId", clientId);
@@ -235,6 +235,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
 </body>
 </html>
+
 
 
 
