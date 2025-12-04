@@ -25,7 +25,7 @@
   input[type="text"] { width: 100%; padding: 5px; }
   button { padding: 8px 16px; margin-top: 10px; cursor: pointer; }
 
-  /* A4 elrendezés */
+
   
   #clientId, #clientSecret {
   display: block;
@@ -90,8 +90,8 @@
   
   .button-container {
     display: flex;
-    justify-content: center; /* vízszintesen középre igazítja */
-    gap: 15px; /* távolság a két gomb között */
+    justify-content: center; 
+    gap: 15px; 
     margin-top: 15px;
     margin-bottom: 15px;
   }
@@ -126,7 +126,6 @@
 <div id="cards"></div>
 
 <script>
-/* --- Spotify Token lekérés --- */
 async function getSpotifyToken(clientId, clientSecret) {
   const body = new URLSearchParams();
   body.append("grant_type", "client_credentials");
@@ -145,7 +144,6 @@ async function getSpotifyToken(clientId, clientSecret) {
   return data.access_token;
 }
 
-/* --- Track adatok lekérése --- */
 async function fetchTrackData(token, url) {
   const trackIdMatch = url.match(/track\/([A-Za-z0-9]+)/);
   if (!trackIdMatch) return null;
@@ -163,13 +161,13 @@ async function fetchTrackData(token, url) {
   };
 }
 
-/* --- Kártyák generálása --- */
+
 async function generateCards() {
   const clientId = document.getElementById("clientId").value.trim();
   const clientSecret = document.getElementById("clientSecret").value.trim();
   if (!clientId || !clientSecret) return alert("Add meg a Spotify Client ID-t és Secretet!");
 
-  // Mentés localStorage-be
+  
   localStorage.setItem("spotifyClientId", clientId);
   localStorage.setItem("spotifyClientSecret", clientSecret);
 
@@ -208,7 +206,6 @@ async function generateCards() {
   }
 }
 
-/* --- ✅ PDF mentés (javított, teljes tartalommal, fehér háttérrel) --- */
 function downloadPDF() {
   const element = document.getElementById("cards");
   const opt = {
@@ -228,7 +225,6 @@ function downloadPDF() {
     .then(pdf => pdf.save('hitster_cards.pdf'));
 }
 
-/* --- LocalStorage betöltés oldalinduláskor --- */
 window.addEventListener("DOMContentLoaded", () => {
   const savedId = localStorage.getItem("spotifyClientId");
   const savedSecret = localStorage.getItem("spotifyClientSecret");
@@ -239,3 +235,4 @@ window.addEventListener("DOMContentLoaded", () => {
 
 </body>
 </html>
+
