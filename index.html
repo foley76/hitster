@@ -118,8 +118,8 @@
 
 
 <div class="button-container">
-  <button onclick="generateCards()">🎶 Kártyák generálása</button>
-  <button onclick="downloadPDF()">💾 Mentés PDF-be</button>
+  <button onclick="generateCards()">🎶 Generate card</button>
+  <button onclick="downloadPDF()">💾 Save to PDF</button>
 </div>
 
 
@@ -139,7 +139,7 @@ async function getSpotifyToken(clientId, clientSecret) {
   });
   const data = await res.json();
   if (!data.access_token) {
-    alert("❌ Hiba a Spotify token lekérésekor. Ellenőrizd a Client ID / Secret értékeket!");
+    alert("❌ Spotify token error. Check your Client ID / Client Secret!");
   }
   return data.access_token;
 }
@@ -235,4 +235,5 @@ window.addEventListener("DOMContentLoaded", () => {
 
 </body>
 </html>
+
 
