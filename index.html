@@ -4,7 +4,47 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Hitster Card Generator™️</title>
+<link id="dynamic-favicon" rel="icon" href="">
 
+<script>
+function startFaviconPulse() {
+    const canvas = document.createElement("canvas");
+    canvas.width = 64;
+    canvas.height = 64;
+    const ctx = canvas.getContext("2d");
+    const link = document.getElementById("dynamic-favicon");
+
+    let scale = 1;
+    let growing = true;
+
+    function draw() {
+        ctx.clearRect(0, 0, 64, 64);
+
+        ctx.font = `${50 * scale}px serif`;
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.fillText("🔊", 32, 32);
+
+        link.href = canvas.toDataURL("image/png");
+
+        // pulzálás
+        if (growing) scale += 0.02;
+        else scale -= 0.02;
+
+        if (scale > 1.20) growing = false;
+        if (scale < 1.00) growing = true;
+
+        requestAnimationFrame(draw);
+    }
+
+    draw();
+}
+
+window.addEventListener("load", startFaviconPulse);
+</script>
+
+
+	
 <link rel="icon" href="data:image/svg+xml,
 <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
   <text y='.9em' font-size='90'>🔊</text>
@@ -227,4 +267,5 @@ window.addEventListener("DOMContentLoaded", () => {
 
 </body>
 </html>
+
 
