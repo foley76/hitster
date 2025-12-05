@@ -4,8 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>™️Hitster Card Generator</title>
+
+<link rel="icon" href="data:image/svg+xml,
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
+  <text y='.9em' font-size='90'>🔊</text>
+</svg>">
+
 <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
 <style>
   body { 
 	font-family: Arial, sans-serif; 
@@ -19,18 +26,15 @@
 	min-height: 100vh;
   }
   
-  
   h1 { text-align: center; margin-top: 0; }
   .input-row { margin-bottom: 10px; display: flex; gap: 10px; }
   input[type="text"] { width: 100%; padding: 5px; }
   button { padding: 8px 16px; margin-top: 10px; cursor: pointer; }
 
-
-  
   #clientId, #clientSecret {
-  display: block;
-  width: calc(100% - 10px);
-  box-sizing: border-box;
+    display: block;
+    width: calc(100% - 10px);
+    box-sizing: border-box;
   }
   
   #cards, 
@@ -72,16 +76,8 @@
     width: 100%;
   }
 
-  /* Betűméretek */
-  .info .year {
-    font-size: 20pt;
-    font-weight: bold;
-  }
-
-  .info .artist, .info .title {
-    font-size: 16pt;
-    font-weight: normal;
-  }
+  .info .year { font-size: 20pt; font-weight: bold; }
+  .info .artist, .info .title { font-size: 16pt; }
 
   @media print {
     body { margin: 0; }
@@ -96,10 +92,10 @@
     margin-bottom: 15px;
   }
   
-  
 </style>
 </head>
 <body>
+
 <h1>🎵 Hitster Card Generator 🎵</h1>
 
 <label>Spotify Client ID:</label>
@@ -112,16 +108,14 @@
   <div class="input-row"><input type="text" placeholder="Spotify track link #2"></div>
   <div class="input-row"><input type="text" placeholder="Spotify track link #3"></div>
   <div class="input-row"><input type="text" placeholder="Spotify track link #4"></div>
-  <div class="input-row"><input type="text" placeholder="Spotify track link #5"></div>
+  ￼<div class="input-row"><input type="text" placeholder="Spotify track link #5"></div>
   <div class="input-row"><input type="text" placeholder="Spotify track link #6"></div>
 </div>
-
 
 <div class="button-container">
   <button onclick="generateCards()">🎶 Generate card</button>
   <button onclick="downloadPDF()">💾 Save to PDF</button>
 </div>
-
 
 <div id="cards"></div>
 
@@ -161,13 +155,11 @@ async function fetchTrackData(token, url) {
   };
 }
 
-
 async function generateCards() {
   const clientId = document.getElementById("clientId").value.trim();
   const clientSecret = document.getElementById("clientSecret").value.trim();
   if (!clientId || !clientSecret) return alert("No Spotify Client ID / Client Secret!");
 
-  
   localStorage.setItem("spotifyClientId", clientId);
   localStorage.setItem("spotifyClientSecret", clientSecret);
 
@@ -235,11 +227,3 @@ window.addEventListener("DOMContentLoaded", () => {
 
 </body>
 </html>
-
-
-
-
-
-
-
-
